@@ -2,19 +2,21 @@ version: '3'
 services:
   postgres:
     image: postgres
+    container_name: postgres
     hostname: postgres
     ports:
-      - "6543:5432"
+      - 5432:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: TEST_SM
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+       - postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
 
   pgadmin:
     image: dpage/pgadmin4
+    container_name: pgadmin
     depends_on:
       - postgres
     ports:
@@ -23,6 +25,18 @@ services:
       PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
       PGADMIN_DEFAULT_PASSWORD: admin
     restart: unless-stopped
+
+  prisma-app: 
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: prisma-api 
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+    restart: always
 
 volumes:
   postgres-data:

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "test": "jest"
+    "test": "jest",
+    "prisma": "prisma"
   },
   "keywords": [
     "nodejs",
@@ -18,12 +19,12 @@
   "author": "Alex Kuznetsov",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "^2.29.0",
+    "@prisma/client": "^2.29.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
     "jest": "^27.0.6",
     "nodemon": "^2.0.12",
-    "prisma": "^2.29.0"
+    "prisma": "^2.29.1"
   }
 }
