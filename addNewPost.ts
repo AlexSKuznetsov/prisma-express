@@ -1,7 +1,15 @@
-const { PrismaClient } = require('@prisma/client')
-const prisma = new PrismaClient()
+import { PrismaClient } from "@prisma/client";
 
-const addNewPost = async (params) => {
+const prisma = new PrismaClient();
+
+export interface Params {
+  name: string;
+  email: string;
+  title: string;
+  bio: string;
+}
+
+export const addNewPost = async (params: Params) => {
   const { name, email, title, bio } = params;
 
   const result = await prisma.user.create({
@@ -14,12 +22,7 @@ const addNewPost = async (params) => {
       profile: {
         create: { bio },
       },
-    }
-  })
+    },
+  });
   return result;
-}
-
-module.exports = {
-  addNewPost
-}
-
+};
