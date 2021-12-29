@@ -1,9 +1,11 @@
-# Node.js boilerplate for development backend application with DB
+# Node.js boilerplate for develop backend app with DB
 
-- TypeScript
-- Express.js
-- Prisma ORM
-- Docker-compose for running all together
+- TypeScript (https://github.com/Microsoft/TypeScript)
+- Express.js (https://github.com/expressjs/express)
+- Prisma ORM (https://github.com/prisma/prisma)
+- PostgreSQL (https://www.postgresql.org/)
+- pgAdmin GUI tool for PostgreSQL (https://www.pgadmin.org/)
+- Docker-Compose for running all together
 
 ## Running application
 
@@ -13,10 +15,10 @@ Copy dist
 git clone https://github.com/AlexSKuznetsov/prisma-express.git
 ```
 
-Running Docker containers. Go to prisma-express directiry
+Running Docker containers. 
 
 ```
-docker-compose up -d
+cd prisma-express && docker-compose up -d
 ```
 
 ### Access to PGAmin for admin your PostgreSQL with GUI
