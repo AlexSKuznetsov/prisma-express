@@ -1,20 +1,36 @@
-# PostgreSQL, PGAdmin, Express js, Prisma, Docker, Docker compose
+# Node.js boilerplate for development backend application with DB
+
+- TypeScript
+- Express.js
+- Prisma ORM
+- Docker-compose for running all together
 
 ## Running application
-```
-docker compose up -d
+
+Copy dist
+
+```sh
+git clone https://github.com/AlexSKuznetsov/prisma-express.git
 ```
 
-### View web application for admin database
-* go to [localhost:5555](localhost:5555)
-* login with pgadmin4@pgadmin.org/admin
-* connect to DB with creds: 
-  * hostname: postgres;
-  * username/password: postgres
+Running Docker containers. Go to prisma-express directiry
+
+```
+docker-compose up -d
+```
+
+### Access to PGAmin for admin your PostgreSQL with GUI
+
+- go to [localhost:5555](localhost:5555)
+- login with pgadmin4@pgadmin.org / admin
+- connect to DB with this credentials:
+  - hostname: postgres;
+  - username/password: postgres
 
 ### Expose and save data from database in Postman
 
-* post to [localhost:3000/api/data](localhost:3000/api/data) from your postman this object: 
+- post to [localhost:3000/api/data](localhost:3000/api/data) from your Postman this object:
+
 ```
 {
     "name": "Alex",
@@ -24,7 +40,7 @@ docker compose up -d
 }
 ```
 
-* go to [localhost:3000/api/data](localhost:3000/api/data) for getting data from server, and you will see data like this:
+- go to [localhost:3000/api/data](localhost:3000/api/data) for getting data from server, and you will see data like this:
 
 ```
 [
@@ -51,3 +67,19 @@ docker compose up -d
     }
 ]
 ```
+
+### You can also run Prisma Studio localy
+
+Create .env file in the prisma directory with this text
+
+```
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/TEST_DB?schema=public"
+```
+
+Run Prisma Studio
+
+```sh
+npx prisma studio
+```
+
+Open http://localhost:5556 in your browser
