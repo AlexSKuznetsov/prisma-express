@@ -1,4 +1,4 @@
-# Node.js boilerplate for develop backend app with DB
+# All in one Node.js boilerplate for develop backend API-based App with DB
 
 - TypeScript (https://github.com/Microsoft/TypeScript)
 - Express.js (https://github.com/expressjs/express)
@@ -8,18 +8,19 @@
 - Docker-Compose for running all together
 
 ## Requirements:
-* docker >= 17.12.0+
-* docker-compose
+
+- docker >= 17.12.0+
+- docker-compose
 
 ## Quick Start
 
-* Clone or download this repository
+- Clone or download this repository
 
 ```sh
 git clone https://github.com/AlexSKuznetsov/prisma-express.git
 ```
 
-* Run Docker containers
+- Run Docker containers
 
 ```
 cd prisma-express && docker-compose up -d
@@ -27,14 +28,17 @@ cd prisma-express && docker-compose up -d
 
 ### Access to PGAmin
 
-* go to [localhost:5555](http://localhost:5555)
-* login with: `pgadmin4@pgadmin.org / admin` (as a default)
+- go to [localhost:5555](http://localhost:5555)
+- login with: `pgadmin4@pgadmin.org / admin` (as a default)
   - **Hostname/address**: `postgres` (as a default)
   - **username/password**: `postgres` (as a default)
 
-### Expose and save data from database in Postman
+## Using the REST API
 
-- Post method to this addres [localhost:3000/api/data](http://localhost:3000/api/data) from your Postman this object:
+### `POST`
+
+- `/api/data`: Create a new user
+  - Body:
 
 ```
 {
@@ -45,7 +49,9 @@ cd prisma-express && docker-compose up -d
 }
 ```
 
-- Get data [localhost:3000/api/data](http://localhost:3000/api/data) and you will see data like this:
+### `GET`
+
+- `api/data`: get all data
 
 ```
 [
@@ -73,20 +79,34 @@ cd prisma-express && docker-compose up -d
 ]
 ```
 
-### You can also run Prisma Studio locally
+## Local Development workarounds
 
-* Create .env file in the prisma directory with this text
+### Requirements:
+
+- Node.js 14 version or higher
+
+---
+
+- Stop Prisma container `docker stop prisma-api` (container name from .yml file)
+- **Make sure that you have `.env` file inside prisma directory with this content**
 
 ```
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/TEST_DB?schema=public"
 ```
 
-* Run Prisma Studio
+- Install dependencies `npm i`
+- Run `npx prisma generate` for recreating connection
+- Run `npm run dev` for statring local API server
 
-```sh
-npx prisma studio
-```
+### You can also run Prisma Studio locally (basic visual interface to access DB)
 
-* Open http://localhost:5556 in your browser
+- Run `npx prisma studio`
+- Open http://localhost:5556
+
+> Let's say you made changes to Prisma API server source code and want to check how it works together with the rest of the Docker services.
+
+- You can recreate only one compose service: `docker-compose up -d --force-recreate --no-deps prisma-app`
+
+- Or recreate all the containers: `docker-compose up -d --build --force-recreate`
 
 Happy coding :)

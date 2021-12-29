@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", (_req, res: Response) => {
-  res.send("Server is running...");
+  res.send(`Server is running on port: ${port}`);
 });
 
 app.get("/api/data", async (_req, res) => {
