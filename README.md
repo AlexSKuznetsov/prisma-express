@@ -7,31 +7,34 @@
 - pgAdmin GUI tool for PostgreSQL (https://www.pgadmin.org/)
 - Docker-Compose for running all together
 
-## Running application
+## Requirements:
+* docker >= 17.12.0+
+* docker-compose
 
-Copy dist
+## Quick Start
+
+* Clone or download this repository
 
 ```sh
 git clone https://github.com/AlexSKuznetsov/prisma-express.git
 ```
 
-Running Docker containers. 
+* Run Docker containers
 
 ```
 cd prisma-express && docker-compose up -d
 ```
 
-### Access to PGAmin for admin your PostgreSQL with GUI
+### Access to PGAmin
 
-- go to [localhost:5555](localhost:5555)
-- login with pgadmin4@pgadmin.org / admin
-- connect to DB with this credentials:
-  - hostname: postgres;
-  - username/password: postgres
+* go to [localhost:5555](http://localhost:5555)
+* login with: `pgadmin4@pgadmin.org / admin` (as a default)
+  - **Hostname/address**: `postgres` (as a default)
+  - **username/password**: `postgres` (as a default)
 
 ### Expose and save data from database in Postman
 
-- post to [localhost:3000/api/data](localhost:3000/api/data) from your Postman this object:
+- Post method to this addres [localhost:3000/api/data](http://localhost:3000/api/data) from your Postman this object:
 
 ```
 {
@@ -42,7 +45,7 @@ cd prisma-express && docker-compose up -d
 }
 ```
 
-- go to [localhost:3000/api/data](localhost:3000/api/data) for getting data from server, and you will see data like this:
+- Get data [localhost:3000/api/data](http://localhost:3000/api/data) and you will see data like this:
 
 ```
 [
@@ -70,18 +73,20 @@ cd prisma-express && docker-compose up -d
 ]
 ```
 
-### You can also run Prisma Studio localy
+### You can also run Prisma Studio locally
 
-Create .env file in the prisma directory with this text
+* Create .env file in the prisma directory with this text
 
 ```
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/TEST_DB?schema=public"
 ```
 
-Run Prisma Studio
+* Run Prisma Studio
 
 ```sh
 npx prisma studio
 ```
 
-Open http://localhost:5556 in your browser
+* Open http://localhost:5556 in your browser
+
+Happy coding :)
