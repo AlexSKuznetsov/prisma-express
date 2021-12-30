@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/app.ts",
+    "build": "tsc",
     "dev": "nodemon src/app.ts",
     "test": "jest",
     "prisma": "prisma"
