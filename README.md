@@ -96,7 +96,7 @@ DATABASE_URL="postgresql://postgres:postgres@localhost:5432/TEST_DB?schema=publi
 
 - Install dependencies `npm i`
 - Run `npx prisma generate` for recreating connection
-- Run `npm run dev` for statring local API server
+- Run `npm run dev` for starting local API server
 
 ### You can also run Prisma Studio locally (basic visual interface to access DB)
 
